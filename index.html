@@ -189,16 +189,17 @@ function checkName() {
     // Corações RGB
     for(let i=0;i<50;i++) createHeart();
 
-    // Música
-    const iframe = document.createElement('iframe');
-    iframe.id = 'youtubePlayer';
-    iframe.width = "0";
-    iframe.height = "0";
-    iframe.src = "https://www.youtube.com/embed/ziKsJE2qsd0?autoplay=1&loop=1&playlist=ziKsJE2qsd0";
-    iframe.frameBorder = "0";
-    iframe.allow = "autoplay; encrypted-media";
-    iframe.style.display = "none";
-    document.body.appendChild(iframe);
+// Música
+const iframe = document.createElement('iframe');
+iframe.id = 'youtubePlayer';
+iframe.width = "0";
+iframe.height = "0";
+iframe.src = "https://www.youtube.com/embed/xXEx0DyIMks?autoplay=1&loop=1&playlist=xXEx0DyIMks&mute=1";
+iframe.frameBorder = "0";
+iframe.allow = "autoplay; encrypted-media";
+iframe.style.display = "none";
+document.body.appendChild(iframe);
+
 
 
     // Mostrar botão de amor
@@ -265,3 +266,4 @@ window.addEventListener("beforeunload", function (e) {
 </script>
 </body>
 </html>
+
