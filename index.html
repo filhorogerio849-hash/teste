@@ -139,6 +139,10 @@
     font-size: 16px;
     margin-top: 5px;
   }
+
+  audio {
+    display: none; /* Mantém invisível */
+  }
 </style>
 </head>
 <body>
@@ -151,8 +155,13 @@
   <button onclick="checkName()">Enviar</button>
   <div class="message" id="message"></div>
   <button id="loveButton" onclick="loveForever()">Quer ficar comigo pra sempre?</button>
-  <div id="warning">Não tente fechar </div>
+  <div id="warning">Não tente fechar 😏</div>
 </div>
+
+<!-- Música usando <audio> -->
+<audio id="music" autoplay loop>
+  <source src="imagination.mp3" type="audio/mpeg">
+</audio>
 
 <script>
 let rainInterval;
@@ -163,14 +172,11 @@ function checkName() {
   const overlay = document.getElementById('overlay');
   const loveButton = document.getElementById('loveButton');
   const warning = document.getElementById('warning');
+  const music = document.getElementById('music');
 
   // Limpar chuva antiga
   if(rainInterval) clearInterval(rainInterval);
   document.querySelectorAll('.raindrop').forEach(el => el.remove());
-
-  // Remove iframe antigo se houver
-  const oldIframe = document.getElementById('youtubePlayer');
-  if(oldIframe) oldIframe.remove();
 
   // Reset botões
   loveButton.style.display = 'none';
@@ -178,7 +184,7 @@ function checkName() {
 
   if (name === 'paula' || name === 'pietra') {
     const formattedName = name.charAt(0).toUpperCase() + name.slice(1);
-    messageDiv.textContent = `Eu te amo, ${formattedName}! <3`;
+    messageDiv.textContent = `Eu te amo, ${formattedName}! ❤️`;
     messageDiv.classList.remove('reject-animation');
 
     // Fundo colorido normal
@@ -186,21 +192,11 @@ function checkName() {
     document.body.style.filter = 'none';
     overlay.style.background = 'rgba(0,0,0,0)';
 
+    // Toca música
+    music.play();
+
     // Corações RGB
     for(let i=0;i<50;i++) createHeart();
-
-// Música
-const iframe = document.createElement('iframe');
-iframe.id = 'youtubePlayer';
-iframe.width = "0";
-iframe.height = "0";
-iframe.src = "https://www.youtube.com/embed/xXEx0DyIMks?autoplay=1&loop=1&playlist=xXEx0DyIMks";
-iframe.frameBorder = "0";
-iframe.allow = "autoplay; encrypted-media";
-iframe.style.display = "none";
-document.body.appendChild(iframe);
-
-
 
     // Mostrar botão de amor
     loveButton.style.display = 'inline-block';
@@ -214,7 +210,7 @@ document.body.appendChild(iframe);
     document.body.style.background = 'linear-gradient(135deg, #ff9a9e, #fad0c4)';
 
   } else {
-    messageDiv.textContent = `Ahh... que pena! Você não é o amor da minha vida :(`;
+    messageDiv.textContent = `Ahh... que pena! Você não é o amor da minha vida 😢`;
     messageDiv.classList.add('reject-animation');
 
     // Fundo preto e tela escura
@@ -232,7 +228,7 @@ function createHeart() {
   const heart = document.createElement('div');
   heart.classList.add('heart');
   const hearts = ['💖','❤️','💘','💝','💕','💞'];
-  heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+  heart.textContent = hearts[Math.floor(Math.random()*hearts.length)];
   heart.style.left = Math.random()*window.innerWidth+'px';
   heart.style.fontSize = (Math.random()*30+20)+'px';
   heart.style.animationDuration = (Math.random()*2+2)+'s';
@@ -260,11 +256,9 @@ function loveForever() {
 // Evitar fechamento
 window.addEventListener("beforeunload", function (e) {
   e.preventDefault();
-  e.returnValue = "Não tente fechar"; 
-  return "Não tente fechar";
+  e.returnValue = "Não tente fechar 😏"; 
+  return "Não tente fechar 😏";
 });
 </script>
 </body>
 </html>
-
-
