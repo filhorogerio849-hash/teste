@@ -1,264 +1,268 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Presente pra você</title>
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyMens - Sua Jornada para o Bem-Estar Mental</title>
+    
+    <!-- Tailwind CSS para um design moderno e responsivo -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts para uma tipografia limpa -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Aplicando a fonte Poppins como padrão */
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+        /* Definindo as cores personalizadas baseadas no logo */
+        .bg-mymens-purple { background-color: #A39DFF; }
+        .text-mymens-purple { color: #8B83F2; }
+        .border-mymens-purple { border-color: #8B83F2; }
+        .hover\:bg-mymens-purple-dark:hover { background-color: #7A72CC; }
+        .bg-mymens-light { background-color: #F4F3FF; }
 
-  body {
-    font-family: 'Arial', sans-serif;
-    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    overflow: hidden;
-    position: relative;
-    transition: background 1s, filter 1s;
-  }
-
-  #overlay {
-    position: fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    pointer-events:none;
-    background: rgba(0,0,0,0);
-    transition: background 1s;
-    z-index: 5;
-  }
-
-  .container {
-    background: rgba(255, 255, 255, 0.9);
-    padding: 40px 50px;
-    border-radius: 20px;
-    text-align: center;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    transition: transform 0.3s;
-    z-index: 10;
-    position: relative;
-  }
-
-  .container:hover {
-    transform: scale(1.05);
-  }
-
-  h1 {
-    font-family: 'Pacifico', cursive;
-    color: #ff4b5c;
-    margin-bottom: 20px;
-    animation: pulse 2s infinite;
-  }
-
-  input[type="text"] {
-    padding: 10px;
-    width: 80%;
-    border: 2px solid #ff4b5c;
-    border-radius: 10px;
-    font-size: 16px;
-    margin-bottom: 20px;
-  }
-
-  button {
-    padding: 10px 20px;
-    background: #ff4b5c;
-    border: none;
-    border-radius: 10px;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background 0.3s;
-    margin-top: 10px;
-  }
-
-  button:hover {
-    background: #ff6f81;
-  }
-
-  .message {
-    margin-top: 20px;
-    font-size: 24px;
-    color: #ff4b5c;
-    font-weight: bold;
-    min-height: 30px;
-    transition: all 0.3s;
-  }
-
-  .heart {
-    position: absolute;
-    font-size: 24px;
-    animation: fall linear forwards;
-  }
-
-  @keyframes fall {
-    0% { transform: translateY(0) scale(1); opacity: 1; }
-    100% { transform: translateY(100vh) scale(1.5); opacity: 0; }
-  }
-
-  @keyframes pulse {
-    0%,100% { transform: scale(1); }
-    50% { transform: scale(1.1); }
-  }
-
-  .reject-animation {
-    animation: shake 0.5s;
-  }
-
-  @keyframes shake {
-    0% { transform: translateX(0); }
-    25% { transform: translateX(-10px); }
-    50% { transform: translateX(10px); }
-    75% { transform: translateX(-10px); }
-    100% { transform: translateX(0); }
-  }
-
-  .raindrop {
-    position: absolute;
-    width: 3px;
-    height: 20px;
-    background: rgba(173, 216, 230, 0.7);
-    animation: rainFall linear forwards;
-  }
-
-  @keyframes rainFall {
-    0% { transform: translateY(-20px); opacity:1; }
-    100% { transform: translateY(100vh); opacity:0; }
-  }
-
-  #loveButton, #warning {
-    display: none;
-    font-family: 'Pacifico', cursive;
-  }
-
-  #warning {
-    color: #ff4b5c;
-    font-size: 16px;
-    margin-top: 5px;
-  }
-
-  audio {
-    display: none; /* Mantém invisível */
-  }
-</style>
+        /* Estilos para o modo escuro */
+        .dark .bg-mymens-light { background-color: #1F2937; } /* bg-gray-800 */
+        .dark .bg-white { background-color: #111827; } /* bg-gray-900 */
+        .dark .bg-white\/90 { background-color: rgba(17, 24, 39, 0.9); }
+        .dark .text-gray-800 { color: #D1D5DB; } /* text-gray-300 */
+        .dark .text-gray-900 { color: #F9FAFB; } /* text-gray-50 */
+        .dark .text-gray-600 { color: #9CA3AF; } /* text-gray-400 */
+        .dark .border-gray-200 { border-color: #374151; } /* border-gray-700 */
+        .dark .border-gray-700 { border-color: #1F2937; } /* border-gray-800 */
+        .dark .bg-gray-900 { background-color: #000; }
+        .dark .text-mymens-purple { color: #A39DFF; }
+    </style>
 </head>
-<body>
-<div id="overlay"></div>
+<body class="bg-white text-gray-800 transition-colors duration-300">
 
-<div class="container">
-  <h1>Presente pra você 💝</h1>
-  <input type="text" id="nameInput" placeholder="Digite seu primeiro nome">
-  <br>
-  <button onclick="checkName()">Enviar</button>
-  <div class="message" id="message"></div>
-  <button id="loveButton" onclick="loveForever()">Quer ficar comigo pra sempre?</button>
-  <div id="warning">Não tente fechar 😏</div>
-</div>
+    <!-- Cabeçalho e Navegação -->
+    <header class="bg-white/90 backdrop-blur-lg sticky top-0 z-50 border-b border-gray-200">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="#" class="flex items-center gap-3">
+                <img src="image_bf8cb4.jpg" alt="MyMens Logo" class="w-10 h-10 rounded-lg">
+                <span class="text-2xl font-bold text-gray-900">MyMens</span>
+            </a>
+            <!-- Menu de Navegação e Botão de Tema -->
+            <div class="flex items-center gap-8">
+                <nav class="hidden md:flex items-center gap-8">
+                    <a href="#home" class="text-gray-600 hover:text-mymens-purple transition-colors">Início</a>
+                    <a href="#features" class="text-gray-600 hover:text-mymens-purple transition-colors">Funcionalidades</a>
+                    <a href="#how-it-works" class="text-gray-600 hover:text-mymens-purple transition-colors">Como Funciona</a>
+                    <a href="#resources" class="text-gray-600 hover:text-mymens-purple transition-colors">Recursos</a>
+                    <a href="#contact" class="text-gray-600 hover:text-mymens-purple transition-colors">Contato</a>
+                </nav>
 
-<!-- Música usando <audio> -->
-<audio id="music" autoplay loop>
-  <source src="imagination.mp3" type="audio/mpeg">
-</audio>
+                <!-- Botão de Alternância de Tema -->
+                <button id="theme-toggle" type="button" class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5">
+                    <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+                    <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm-.707 12.02l.707-.707a1 1 0 011.414 1.414l-.707.707a1 1 0 01-1.414-1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+                </button>
 
-<script>
-let rainInterval;
+                <!-- Botão de Menu Mobile (placeholder) -->
+                <div class="md:hidden">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </div>
+            </div>
+        </div>
+    </header>
 
-function checkName() {
-  const name = document.getElementById('nameInput').value.trim().toLowerCase();
-  const messageDiv = document.getElementById('message');
-  const overlay = document.getElementById('overlay');
-  const loveButton = document.getElementById('loveButton');
-  const warning = document.getElementById('warning');
-  const music = document.getElementById('music');
+    <!-- Conteúdo Principal -->
+    <main>
+        <!-- Seção Hero -->
+        <section id="home" class="bg-mymens-light">
+            <div class="container mx-auto px-6 py-20 md:py-32 flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/2 text-center md:text-left">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-4 text-gray-900 leading-tight">Sua jornada para uma mente mais saudável começa aqui.</h1>
+                    <p class="text-lg text-gray-600 max-w-xl mb-8">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+                    <a href="#cta" class="bg-mymens-purple text-white font-bold py-3 px-8 rounded-full hover:bg-mymens-purple-dark transition-colors text-lg">Comece a usar</a>
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <!-- Placeholder de Ilustração -->
+                    <div class="w-80 h-80 bg-white rounded-full flex items-center justify-center shadow-lg">
+                        <svg class="w-40 h-40 text-mymens-purple" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5" d="M3.172 16.172a4 4 0 015.656 0M16.172 3.172a4 4 0 010 5.656 M12 21a9.002 9.002 0 008.634-12.036M3.366 11.964a9.002 9.002 0 0012.036 8.634"></path></svg>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-  // Limpar chuva antiga
-  if(rainInterval) clearInterval(rainInterval);
-  document.querySelectorAll('.raindrop').forEach(el => el.remove());
+        <!-- Seção de Funcionalidades -->
+        <section id="features" class="container mx-auto px-6 py-20">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Ferramentas para o seu bem-estar</h2>
+                <p class="text-lg text-gray-600 mt-4 max-w-2xl mx-auto">Desenvolvido para te apoiar em cada passo da sua jornada de autocuidado.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Card 1: Check-in de Humor -->
+                <div class="bg-mymens-light p-8 rounded-xl shadow-sm text-center">
+                    <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-6"><svg class="w-8 h-8 text-mymens-purple" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></div>
+                    <h3 class="text-xl font-bold mb-2">Check-in de Humor</h3>
+                    <p class="text-gray-600">Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui.</p>
+                </div>
+                <!-- Card 2: Rotinas Diárias -->
+                <div class="bg-mymens-light p-8 rounded-xl shadow-sm text-center">
+                    <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-6"><svg class="w-8 h-8 text-mymens-purple" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path></svg></div>
+                    <h3 class="text-xl font-bold mb-2">Rotinas Personalizadas</h3>
+                    <p class="text-gray-600">Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
+                </div>
+                <!-- Card 3: Gamificação -->
+                <div class="bg-mymens-light p-8 rounded-xl shadow-sm text-center">
+                    <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-6"><svg class="w-8 h-8 text-mymens-purple" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-12v4m-2-2h4m5 4v4m-2-2h4M17 3l4 4M3 17l4 4m10.5-3.5a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z"></path></svg></div>
+                    <h3 class="text-xl font-bold mb-2">Gamificação</h3>
+                    <p class="text-gray-600">Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras justo odio.</p>
+                </div>
+                <!-- Card 4: Recursos Extras -->
+                <div class="bg-mymens-light p-8 rounded-xl shadow-sm text-center">
+                    <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-6"><svg class="w-8 h-8 text-mymens-purple" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2h10a2 2 0 002-2v-1a2 2 0 012-2h1.945M7.707 4.5l.053-.053a.5.5 0 01.707 0l2.121 2.121.053.053a.5.5 0 010 .707l-2.121 2.121-.053.053a.5.5 0 01-.707 0l-2.121-2.121-.053-.053a.5.5 0 010-.707l2.121-2.121zM16.5 17.5l-2.121-2.121a.5.5 0 00-.707 0l-2.121 2.121a.5.5 0 000 .707l2.121 2.121a.5.5 0 00.707 0l2.121-2.121a.5.5 0 000-.707z"></path></svg></div>
+                    <h3 class="text-xl font-bold mb-2">Recursos Adicionais</h3>
+                    <p class="text-gray-600">Maecenas sed diam eget risus varius blandit sit amet non magna. Nulla vitae elit libero.</p>
+                </div>
+            </div>
+        </section>
 
-  // Reset botões
-  loveButton.style.display = 'none';
-  warning.style.display = 'none';
+        <!-- Seção Como Funciona -->
+        <section id="how-it-works" class="bg-mymens-light py-20">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Simples, rápido e eficaz</h2>
+                    <p class="text-lg text-gray-600 mt-4 max-w-2xl mx-auto">Comece sua jornada de autocuidado em apenas alguns passos.</p>
+                </div>
+                <div class="flex flex-col md:flex-row justify-center items-center gap-8 md:gap-16">
+                    <!-- Passo 1 -->
+                    <div class="text-center max-w-xs">
+                        <div class="w-24 h-24 bg-mymens-purple text-white text-3xl font-bold rounded-full flex items-center justify-center mx-auto mb-4">1</div>
+                        <h3 class="text-xl font-bold mb-2">Responda o Check-in</h3>
+                        <p class="text-gray-600">Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</p>
+                    </div>
+                    <!-- Passo 2 -->
+                    <div class="text-center max-w-xs">
+                        <div class="w-24 h-24 bg-mymens-purple text-white text-3xl font-bold rounded-full flex items-center justify-center mx-auto mb-4">2</div>
+                        <h3 class="text-xl font-bold mb-2">Receba Atividades</h3>
+                        <p class="text-gray-600">Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+                    </div>
+                    <!-- Passo 3 -->
+                    <div class="text-center max-w-xs">
+                        <div class="w-24 h-24 bg-mymens-purple text-white text-3xl font-bold rounded-full flex items-center justify-center mx-auto mb-4">3</div>
+                        <h3 class="text-xl font-bold mb-2">Acompanhe seu Progresso</h3>
+                        <p class="text-gray-600">Donec ullamcorper nulla non metus auctor fringilla. Morbi leo risus, porta ac.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Seção de Recursos (placeholder) -->
+        <section id="resources" class="container mx-auto px-6 py-20">
+             <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Recursos Adicionais</h2>
+                <p class="text-lg text-gray-600 mt-4 max-w-2xl mx-auto">Conteúdo e ferramentas para aprofundar seu conhecimento e prática.</p>
+            </div>
+             <div class="bg-white p-8 rounded-lg border border-gray-200 text-center">
+                 <p class="text-gray-600">Etiam porta sem malesuada magna mollis euismod. Curabitur blandit tempus porttitor. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+             </div>
+        </section>
 
-  if (name === 'paula' || name === 'pietra') {
-    const formattedName = name.charAt(0).toUpperCase() + name.slice(1);
-    messageDiv.textContent = `Eu te amo, ${formattedName}! ❤️`;
-    messageDiv.classList.remove('reject-animation');
 
-    // Fundo colorido normal
-    document.body.style.background = 'linear-gradient(135deg, #ff9a9e, #fad0c4)';
-    document.body.style.filter = 'none';
-    overlay.style.background = 'rgba(0,0,0,0)';
+        <!-- Seção Call-to-Action (CTA) -->
+        <section id="cta" class="bg-mymens-purple">
+            <div class="container mx-auto px-6 py-20 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Pronto para começar sua jornada?</h2>
+                <p class="text-lg text-white/80 max-w-2xl mx-auto mb-8">Baixe o MyMens gratuitamente e dê o primeiro passo para uma vida mais equilibrada e feliz.</p>
+                <button class="bg-white text-mymens-purple font-bold py-3 px-8 rounded-full hover:bg-gray-100 transition-colors text-lg shadow-lg dark:text-mymens-purple dark:hover:bg-gray-200">Baixar o aplicativo</button>
+            </div>
+        </section>
+    </main>
 
-    // Toca música
-    music.play();
+    <!-- Rodapé -->
+    <footer id="contact" class="bg-gray-900 text-white">
+        <div class="container mx-auto px-6 py-16">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- Sobre -->
+                <div class="col-span-1 md:col-span-2">
+                    <h4 class="text-xl font-bold mb-4">MyMens</h4>
+                    <p class="text-gray-400 max-w-md">Ferramenta de gamificação para saúde mental. Curabitur blandit tempus porttitor. Cras mattis consectetur purus sit amet fermentum.</p>
+                </div>
+                <!-- Links -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Início</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Funcionalidades</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Termos de Serviço</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Política de Privacidade</a></li>
+                    </ul>
+                </div>
+                <!-- Contato -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Contato</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li>contact@mymensapp.com</li>
+                        <li>(11) 99999-9999</li>
+                    </ul>
+                    <!-- Ícones de Mídia Social -->
+                    <div class="flex gap-4 mt-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" /></svg></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.71v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" /></svg></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.024.06 1.378.06 3.808s-.012 2.784-.06 3.808c-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.024.048-1.378.06-3.808.06s-2.784-.013-3.808-.06c-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.048-1.024-.06-1.378-.06-3.808s.012-2.784.06-3.808c.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 016.345 2.525c.636-.247 1.363-.416 2.427.465C9.793 2.013 10.148 2 12.315 2zm0 1.62c-2.403 0-2.73.01-3.688.053-1.01.046-1.583.194-1.996.357-.504.205-.884.446-1.287.85a3.284 3.284 0 00-.85 1.287c-.163.413-.311.986-.357 1.996-.043.958-.053 1.285-.053 3.688s.01 2.73.053 3.688c.046 1.01.194 1.583.357 1.996.205.504.446.884.85 1.287a3.284 3.284 0 001.287.85c.413.163.986.311 1.996.357.958.043 1.285.053 3.688.053s2.73-.01 3.688-.053c1.01-.046 1.583-.194 1.996-.357.504-.205.884.446 1.287-.85a3.284 3.284 0 00.85-1.287c.163-.413.311-.986.357-1.996.043-.958.053-1.285.053-3.688s-.01-2.73-.053-3.688c-.046-1.01-.194-1.583-.357-1.996a3.284 3.284 0 00-.85-1.287 3.284 3.284 0 00-1.287-.85c-.413-.163-.986-.311-1.996-.357C15.045 3.63 14.715 3.62 12.315 3.62zM12 7.72A4.28 4.28 0 1012 16.28a4.28 4.28 0 000-8.56zm0 6.962A2.682 2.682 0 1112 9.32a2.682 2.682 0 010 5.362zm4.405-6.932a1.026 1.026 0 100 2.052 1.026 1.026 0 000-2.052z" clip-rule="evenodd" /></svg></a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-12 border-t border-gray-700 pt-8 text-center text-gray-500">
+                <p>&copy; 2025 MyMens. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
 
-    // Corações RGB
-    for(let i=0;i<50;i++) createHeart();
+    <script>
+        // Icons
+        const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+        const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
 
-    // Mostrar botão de amor
-    loveButton.style.display = 'inline-block';
-    warning.style.display = 'block';
+        // Change the icons inside the button based on previous settings
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            themeToggleLightIcon.classList.remove('hidden');
+            document.documentElement.classList.add('dark');
+        } else {
+            themeToggleDarkIcon.classList.remove('hidden');
+            document.documentElement.classList.remove('dark');
+        }
 
-  } else if (name === '') {
-    messageDiv.textContent = 'Por favor, digite seu nome!';
-    messageDiv.classList.remove('reject-animation');
-    overlay.style.background = 'rgba(0,0,0,0)';
-    document.body.style.filter = 'none';
-    document.body.style.background = 'linear-gradient(135deg, #ff9a9e, #fad0c4)';
+        const themeToggleBtn = document.getElementById('theme-toggle');
 
-  } else {
-    messageDiv.textContent = `Ahh... que pena! Você não é o amor da minha vida 😢`;
-    messageDiv.classList.add('reject-animation');
+        themeToggleBtn.addEventListener('click', function() {
 
-    // Fundo preto e tela escura
-    document.body.style.background = '#000';
-    document.body.style.filter = 'grayscale(100%) brightness(30%)';
-    overlay.style.background = 'rgba(0,0,0,0.5)';
+            // toggle icons inside button
+            themeToggleDarkIcon.classList.toggle('hidden');
+            themeToggleLightIcon.classList.toggle('hidden');
 
-    // Chuva intensa
-    rainInterval = setInterval(createRaindrop, 40);
-  }
-}
+            // if set via local storage previously
+            if (localStorage.getItem('color-theme')) {
+                if (localStorage.getItem('color-theme') === 'light') {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('color-theme', 'dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('color-theme', 'light');
+                }
 
-// Corações RGB
-function createHeart() {
-  const heart = document.createElement('div');
-  heart.classList.add('heart');
-  const hearts = ['💖','❤️','💘','💝','💕','💞'];
-  heart.textContent = hearts[Math.floor(Math.random()*hearts.length)];
-  heart.style.left = Math.random()*window.innerWidth+'px';
-  heart.style.fontSize = (Math.random()*30+20)+'px';
-  heart.style.animationDuration = (Math.random()*2+2)+'s';
-  heart.style.color = `rgb(${Math.floor(Math.random()*256)}, ${Math.floor(Math.random()*256)}, ${Math.floor(Math.random()*256)})`;
-  document.body.appendChild(heart);
-  setTimeout(()=>heart.remove(),4000);
-}
-
-// Chuva
-function createRaindrop() {
-  const drop = document.createElement('div');
-  drop.classList.add('raindrop');
-  drop.style.left = Math.random()*window.innerWidth+'px';
-  drop.style.height = (15+Math.random()*15)+'px';
-  drop.style.animationDuration = (0.5+Math.random()*0.5)+'s';
-  document.body.appendChild(drop);
-  setTimeout(()=>drop.remove(),2500);
-}
-
-// Botão amor
-function loveForever() {
-  alert("Sim! 💖 Você aceitou ficar comigo pra sempre!");
-}
-
-// Evitar fechamento
-window.addEventListener("beforeunload", function (e) {
-  e.preventDefault();
-  e.returnValue = "Não tente fechar 😏"; 
-  return "Não tente fechar 😏";
-});
-</script>
+            // if NOT set via local storage previously
+            } else {
+                if (document.documentElement.classList.contains('dark')) {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('color-theme', 'light');
+                } else {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('color-theme', 'dark');
+                }
+            }
+            
+        });
+    </script>
 </body>
 </html>
+
